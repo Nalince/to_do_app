@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/constants/colors.dart';
+import 'package:to_do_app/models/todo.dart';
+import 'package:to_do_app/widgets/todo_item.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,13 +12,42 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final tasks = ToDo.todoList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: tdBGColor,
       appBar: _appBarWidget(),
-      body: const Center(
-        child: Text('Hello world'),
+      body: Stack(
+        children: [
+          Container(
+            child: Column(
+              children: [
+                const Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: Text(
+                      'To Do List',
+                      style: TextStyle(
+                        color: textBlack,
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: tasks.length,
+                  itemBuilder: (context, index) => ToDoItem(
+                    todo: tasks[index],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
