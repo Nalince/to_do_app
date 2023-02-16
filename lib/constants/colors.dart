@@ -6,4 +6,7 @@ const Color tdBlue = Color(0xFF5F52EE);
 const Color tdBlack = Color(0xFF3A3A3A);
 const Color tdGrey = Color(0xFF717171);
 
-const Color tdBGColor = Color(0xFFEEEFF5);
+const Color tdBGColor = Color.fromARGB(255, 178, 182, 214);
+
+const Color textBlack = Color.fromARGB(255, 0, 0, 0);
+const Color textWhite = Color(0xFFEEEFF5);
